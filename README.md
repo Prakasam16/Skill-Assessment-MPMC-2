@@ -92,7 +92,8 @@ WAIT:
 END
 ```
 ## OUTPUT
-![Uploading skill 2.jpg…]()
+![skill 2](https://github.com/user-attachments/assets/089a105f-db2e-4f4b-ad32-85e4555b55af)
+
 
 
 ## RESULT
