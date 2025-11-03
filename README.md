@@ -63,33 +63,31 @@ To write and execute an Assembly Language Program in the 8051 microcontroller to
 
 ## PROGRAM (Assembly - 8051)
 
-```asm
-; File: toggle_led_10ms_timer1.asm
-
+```
 ORG 0000H
 
 MAIN:
-    MOV P1, #00H        ; Set Port 1 as output
-    MOV TMOD, #10H      ; Timer 1, Mode 1 (16-bit)
+    MOV P1, #00H        
+    MOV TMOD, #10H      
 
 LOOP:
-    SETB P1.0           ; Turn ON LED
-    ACALL DELAY         ; Delay 10 ms
+    SETB P1.0           
+    ACALL DELAY         
 
-    CLR P1.0            ; Turn OFF LED
-    ACALL DELAY         ; Delay 10 ms
-    SJMP LOOP           ; Repeat forever
+    CLR P1.0            
+    ACALL DELAY         
+    SJMP LOOP           
 
 DELAY:
-    MOV TH1, #0F2H      ; Load high byte for 10 ms delay
-    MOV TL1, #04H       ; Load low byte for 10 ms delay
-    SETB TR1            ; Start Timer 1
+    MOV TH1, #0F2H      
+    MOV TL1, #04H      
+    SETB TR1            
 
 WAIT:
-    JNB TF1, WAIT       ; Wait for overflow
-    CLR TR1             ; Stop Timer
-    CLR TF1             ; Clear overflow flag
-    RET                 ; Return
+    JNB TF1, WAIT       
+    CLR TR1             
+    CLR TF1             
+    RET                
 
 END
 ```
