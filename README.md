@@ -93,7 +93,7 @@ WAIT:
 
 END
 
-OUTPUT
+##OUTPUT
 
-RESULT
+##RESULT
 The program successfully generates a 10 ms delay using Timer 1 (Mode 1) and toggles LED on P1.0 continuously.
