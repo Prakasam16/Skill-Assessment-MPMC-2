@@ -93,7 +93,8 @@ WAIT:
 
 END
 
-OUTPUT
+## OUTPUT
 
-RESULT
-The program successfully generates a 10 ms delay using Timer 1 (Mode 1) and toggles LED on P1.0 continuously.
+
+## RESULT
+The Assembly Language Program for the 8051 microcontroller was successfully written, assembled, and executed to generate a **10 ms delay using Timer 1 in Mode 1** and toggle an LED on **Port 1.0 continuously**.
