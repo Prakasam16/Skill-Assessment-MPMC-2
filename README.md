@@ -92,7 +92,8 @@ WAIT:
 END
 ```
 ## OUTPUT
-![skill 2](https://github.com/user-attachments/assets/089a105f-db2e-4f4b-ad32-85e4555b55af)
+![skill 2](https://github.com/user-attachments/assets/d8f09dd0-0b97-49ff-8c86-f673bf1e05ad)
+
 
 
 
