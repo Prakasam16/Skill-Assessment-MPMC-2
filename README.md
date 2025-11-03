@@ -92,7 +92,7 @@ WAIT:
 END
 ```
 ## OUTPUT
-
+<p align="center"> <img src="https://github.com/user-attachments/assets/fd27d9ce-7125-4779-98df-11dfd4240482" alt="Logic Analyzer showing 10ms toggling waveform" width="800"> </p>
 
 ## RESULT
 The Assembly Language Program for the 8051 microcontroller was successfully written, assembled, and executed to generate a **10 ms delay using Timer 1 in Mode 1** and toggle an LED on **Port 1.0 continuously**.
