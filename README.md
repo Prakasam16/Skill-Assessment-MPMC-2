@@ -1,83 +1,83 @@
-Generate 10 ms Delay Using Timer 1 (Mode 1) and Toggle LED on Port 1.0
-AIM
+# Generate 10 ms Delay Using Timer 1 (Mode 1) and Toggle LED on Port 1.0
 
+## AIM
 To write and execute an Assembly Language Program in the 8051 microcontroller to generate a 10 ms delay using Timer 1 in Mode 1 and toggle an LED connected to Port 1.0 continuously.
 
-APPARATUS REQUIRED
+---
 
-8051 Microcontroller Kit or Keil µVision Software
+## APPARATUS REQUIRED
+- 8051 Microcontroller Kit or Keil µVision Software
+- LED and connecting wires
+- Logic Analyzer or Oscilloscope (for timing verification)
 
-LED and connecting wires
+---
 
-Logic Analyzer or Oscilloscope (for timing verification)
+## ALGORITHM
+1. Start the program
+2. Configure Port 1 as output for LED
+3. Set Timer1 in Mode1 (16-bit) → `TMOD = 10H`
+4. Load TH1 and TL1 to generate 10 ms delay
+5. Start Timer (TR1 = 1)
+6. Wait till Overflow Flag TF1 = 1
+7. Stop Timer & Clear TF1
+8. Toggle LED at P1.0
+9. Repeat forever
 
-ALGORITHM
+---
 
-Start the program.
+## FLOWCHART
+    ┌────────────────────────┐
+    │        Start           │
+    └──────────┬─────────────┘
+               │
+               ▼
+    ┌────────────────────────┐
+    │ Set Port 1 as Output   │
+    │ TMOD = 10H             │
+    └──────────┬─────────────┘
+               │
+               ▼
+    ┌────────────────────────┐
+    │ Load TH1, TL1 for 10ms │
+    │ Start Timer (TR1=1)    │
+    └──────────┬─────────────┘
+               │
+               ▼
+    ┌────────────────────────┐
+    │ Wait for TF1 = 1       │
+    └──────────┬─────────────┘
+               │
+               ▼
+    ┌────────────────────────┐
+    │ Stop Timer             │
+    │ Clear TF1              │
+    │ Toggle LED (P1.0)      │
+    └──────────┬─────────────┘
+               │
+               ▼
+    ┌────────────────────────┐
+    │   Repeat Forever       │
+    └────────────────────────┘
 
-Configure Port 1 as output for connecting the LED.
+---
 
-Set Timer 1 in Mode 1 (16-bit timer mode) using TMOD = 10H.
+## PROGRAM (Assembly - 8051)
 
-Load TH1 and TL1 registers with values to generate 10 ms delay.
+```asm
+; File: toggle_led_10ms_timer1.asm
 
-Start Timer 1 by setting TR1 = 1.
-
-Wait until Timer Overflow Flag TF1 becomes 1.
-
-Stop Timer and clear the overflow flag TF1.
-
-Toggle the LED connected to Port 1.0.
-
-Repeat the above steps continuously.
-
-FLOWCHART
-        ┌────────────────────────┐
-        │        Start           │
-        └──────────┬─────────────┘
-                   │
-                   ▼
-        ┌────────────────────────┐
-        │ Set Port 1 as Output   │
-        │ TMOD = 10H             │
-        └──────────┬─────────────┘
-                   │
-                   ▼
-        ┌────────────────────────┐
-        │ Load TH1, TL1 for 10ms │
-        │ Start Timer (TR1=1)    │
-        └──────────┬─────────────┘
-                   │
-                   ▼
-        ┌────────────────────────┐
-        │ Wait for TF1 = 1       │
-        └──────────┬─────────────┘
-                   │
-                   ▼
-        ┌────────────────────────┐
-        │ Stop Timer             │
-        │ Clear TF1              │
-        │ Toggle LED (P1.0)      │
-        └──────────┬─────────────┘
-                   │
-                   ▼
-        ┌────────────────────────┐
-        │   Repeat Forever       │
-        └────────────────────────┘
-
-PROGRAM
 ORG 0000H
 
 MAIN:
-    MOV P1, #00H        ; Configure Port 1 as output
-    MOV TMOD, #10H      ; Timer 1 Mode 1 (16-bit)
+    MOV P1, #00H        ; Set Port 1 as output
+    MOV TMOD, #10H      ; Timer 1, Mode 1 (16-bit)
 
 LOOP:
     SETB P1.0           ; Turn ON LED
-    ACALL DELAY         ; Call delay routine
+    ACALL DELAY         ; Delay 10 ms
 
     CLR P1.0            ; Turn OFF LED
-    ACALL DELAY         ; Call delay routine
+    ACALL DELAY         ; Delay 10 ms
     SJMP LOOP           ; Repeat forever
 
 DELAY:
@@ -86,16 +86,14 @@ DELAY:
     SETB TR1            ; Start Timer 1
 
 WAIT:
-    JNB TF1, WAIT       ; Wait for overflow flag
+    JNB TF1, WAIT       ; Wait for overflow
     CLR TR1             ; Stop Timer
-    CLR TF1             ; Clear Timer flag
+    CLR TF1             ; Clear overflow flag
     RET                 ; Return
 
 END
 
 OUTPUT
 
-
 RESULT
-
-Thus, the Assembly Language Program for the 8051 microcontroller to generate a 10 ms delay using Timer 1 in Mode 1 and toggle an LED on Port 1.0 continuously was successfully written, assembled, and executed.
+The program successfully generates a 10 ms delay using Timer 1 (Mode 1) and toggles LED on P1.0 continuously.
